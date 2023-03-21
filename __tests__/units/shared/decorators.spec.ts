@@ -1,7 +1,5 @@
-import { resolve } from "path";
-import { autoload } from "../../../shared/autoload";
-import { container } from "../../../shared/container";
-import { Injectable, Inject } from "../../../shared/decorators";
+import { container } from "../../../src/shared/container";
+import { Injectable, Inject } from "../../../src/shared/decorators";
 
 @Injectable("timeService")
 // @ts-ignore

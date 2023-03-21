@@ -8,12 +8,21 @@ declare global {
 
 let server: http.Server;
 
+const TEST_TYPE = {
+  E2E: "e2e",
+  UNITS: "units",
+};
+
 beforeAll(() => {
-  const app = new Server();
-  server = app.listen();
-  globalThis.request = supertest(app.getApplication());
+  if (process.env.TEST_TYPE === TEST_TYPE.E2E) {
+    const app = new Server();
+    server = app.listen();
+    globalThis.request = supertest(app.getApplication());
+  }
 });
 
 afterAll(() => {
-  server.close();
+  if (process.env.TEST_TYPE === TEST_TYPE.E2E) {
+    server.close();
+  }
 });

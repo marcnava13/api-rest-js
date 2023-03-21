@@ -7,7 +7,9 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "jest --forceExit --detectOpenHandles --maxWorkers=1",
+    "test": "jest --forceExit --detectOpenHandles --maxWorkers=1 --verbose",
+    "test:units": "cross-env TEST_TYPE=units jest --forceExit --detectOpenHandles --maxWorkers=1 ./__tests__/units",
+    "test:e2e": "cross-env TEST_TYPE=e2e jest --forceExit --detectOpenHandles --maxWorkers=1 ./__tests__/e2e",
     "lint": "standard --fix"
   },
   "keywords": [],
@@ -19,6 +21,7 @@
     "@types/supertest": "2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
+    "cross-env": "7.0.3",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.27.5",

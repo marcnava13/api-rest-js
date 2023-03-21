@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { autoload } from "../../../shared/autoload";
+import { autoload } from "../../../src/shared/autoload";
 
 describe("Autoload function test", () => {
   it("should return an array of filenames", () => {
