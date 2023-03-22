@@ -9,7 +9,7 @@ export class CreateUserCommandHandler {
   private readonly usersRepository!: InMemoryUsersRepository;
 
   async handler(command: CreateUserCommand) {
-    await this.usersRepository.create({
+    await this.usersRepository.createUser({
       id: command.id,
       email: command.email,
     });

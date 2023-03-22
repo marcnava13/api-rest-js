@@ -10,7 +10,7 @@ export class FindByIdUserQueryHandler {
   private readonly usersRepository!: InMemoryUsersRepository;
 
   async handler(command: FindByIdUserCommand): Promise<User> {
-    const user = await this.usersRepository.findBy(command.id);
+    const user = await this.usersRepository.findByIdUser(command.id);
 
     return user!;
   }
