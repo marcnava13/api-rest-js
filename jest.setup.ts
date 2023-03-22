@@ -14,7 +14,7 @@ const TEST_TYPE = {
 };
 
 beforeAll(() => {
-  if (process.env.TEST_TYPE === TEST_TYPE.E2E) {
+  if (process.env.TEST_TYPE !== TEST_TYPE.UNITS) {
     const app = new Server();
     server = app.listen();
     globalThis.request = supertest(app.getApplication());
@@ -22,7 +22,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  if (process.env.TEST_TYPE === TEST_TYPE.E2E) {
+  if (process.env.TEST_TYPE !== TEST_TYPE.UNITS) {
     server.close();
   }
 });

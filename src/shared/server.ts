@@ -1,20 +1,19 @@
 import { methodNotAllowed } from "@hapi/boom";
-import { readdirSync } from "fs";
 import http from "http";
 import { resolve } from "path";
 import express, { type Application, Router as ExpressRouter } from "express";
-
 import "reflect-metadata";
+
 import {
   ApiRequest,
   ApiResponse,
-  CONTAINER_METADATA_KEY,
   ErrorHttpException,
   Middleware,
   RouteDecorator,
   ROUTE_METADATA_KEY,
 } from "./types";
 import { autoload } from "./autoload";
+import { RedisCacheManager } from "./cache.manager";
 
 export class Server {
   private readonly app: Application;
@@ -27,6 +26,7 @@ export class Server {
     this.initConfig();
     this.registerRoutes();
     this.registerHandlerError();
+    new RedisCacheManager();
   }
 
   public listen(port: number = 3000): http.Server {

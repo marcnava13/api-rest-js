@@ -6,6 +6,12 @@ This project is focused on giving a course of hexagonal architecture and DDD, ma
 
 ## Basic command
 
+Start redis to handle the cache on GET requests:
+
+```shell
+$ docker-compose up -d
+```
+
 To run this project in local environment:
 
 ```shell

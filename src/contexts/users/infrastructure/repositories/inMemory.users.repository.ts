@@ -1,4 +1,5 @@
 import { Injectable } from "../../../../shared/decorators";
+import { sleep } from "../../../../shared/utils";
 import { CreateUserDto, User } from "../../domain/user.model";
 import { UserRepository } from "../../domain/user.repository";
 
@@ -29,6 +30,7 @@ export class InMemoryUsersRepository implements UserRepository {
   }
 
   public async findBy(userId: string): Promise<User | undefined> {
+    await sleep();
     return this.users.find(({ id }) => id === userId);
   }
 }
